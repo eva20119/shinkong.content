@@ -51,6 +51,8 @@
                         python:plone_view.patterns_settings()"
         id="visual-portal-wrapper">
 
+    <metal:javascriptinbodyslot define-slot="javascript_in_body_slot" />
+
     <div tal:replace="structure provider:plone.toolbar" />
 
     <header id="portal-top" i18n:domain="plone">

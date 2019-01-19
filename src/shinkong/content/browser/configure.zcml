@@ -82,4 +82,12 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="upload_csv"
+      for="*"
+      class=".views.UploadCsv"
+      layer="zope.interface.Interface"
+      permission="zope2.View"
+      />
+
 </configure>

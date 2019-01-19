@@ -21,6 +21,7 @@ from plone import api
             </div>
         </div>
       </tal:rep>
+      <p tal:condition="view/result/text" tal:content="structure view/result/text/raw"></p>
     </div>
 </div>
 

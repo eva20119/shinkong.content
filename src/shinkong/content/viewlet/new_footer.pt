@@ -20,13 +20,6 @@
                         </ul>
                     </div>
                     <div class="col-lg-4 col-sm-12 footer_thr">
-                        <ul class='site_map'>
-                            <li>網站地圖</li>
-                            <li>/</li>
-                            <li>使用條款</li>
-                            <li>/</li>
-                            <li>隱私權保護說明</li>
-                        </ul>
 <?python
 from datetime import datetime
 year = datetime.now().year

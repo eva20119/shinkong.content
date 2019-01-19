@@ -37,6 +37,7 @@
 }
 #result{
     margin-top: 30px;
+    paddingBottom: 20px;
 }
 #new_footer .footer_sec h3{ 
     margin-top: 0;

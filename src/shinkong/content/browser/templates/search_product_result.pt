@@ -1,3 +1,8 @@
+<?python
+from plone import api
+portal_url = api.portal.get().absolute_url()
+?>
+
 <tal:condition condition='view/filterProduct'>
 <script src='https://www.google.com/recaptcha/api.js?render=explicit&onload=onReCaptchaLoad'></script>
 <style>
@@ -38,7 +43,6 @@ tr:first-child td{
 }
 .email_table input{
     width: 50%;
-}
 }
 </style>
 <table class='mobile'>
@@ -101,6 +105,10 @@ tr:first-child td{
 <h4>4、Interlace： Yes.      5、Twist： zero    6、Luster ：full bright (FB)</h4>
 </div>
 
+<div style="text-align: left">
+  <h2>檔案下載</h2>
+  <a href="${portal_url}/system_file/download_pdf/@@download/file/${python: view.download_file[0].getObject().file.filename}">${python: view.download_file[0].getObject().file.filename}</a>
+</div>
 
 <div class='email_table'>
   <h2>聯絡我們</h2>
@@ -188,7 +196,7 @@ tr:first-child td{
 </tal:condition>
 
 <tal:condition condition='not: view/filterProduct'>
-  <h1>No Data</h1>
+  <h1>查詢不到資料</h1>
   <h3>若需要有更多產品諮詢請與我們聯絡! </h3>
   <h4>
      Danny Zou 鄒汶修 <br>
@@ -197,5 +205,4 @@ tr:first-child td{
      E-mail：sk33430@shinkong.com.tw <br>
      WeChat:DannyZeo<br>
   </h4>
-
 </tal:condition>

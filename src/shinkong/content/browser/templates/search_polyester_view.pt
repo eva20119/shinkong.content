@@ -7,10 +7,14 @@
     metal:use-macro="context/main_template/macros/master"
     i18n:domain="gct.content">
 
+<metal:block fill-slot="javascript_head_slot">
+<script src="${portal_url}/++plone++shinkong.content/vue.js"></script>
+</metal:block>
 <body>
 <metal:content-core fill-slot="content-core">
 <metal:content-core define-macro="content-core"
                     tal:define="toc context/table_of_contents|nothing;">
+
 <style>
 .documentFirstHeading{
     display: none;
@@ -21,8 +25,10 @@
     padding-left: 0;
 }
 </style>
-    <input type="search" id="subject" value="" placeholder="Search Subject Here..."  style='display: inline;width: 70%'>
-    <button id='send' style='color: white;background: #3d84a8;padding: 8px;border-radius: 8px;font-size: 18px'>關鍵字搜尋</button>
+
+<div >
+    <input type="search" id="subject"   
+         placeholder="Search Subject Here..."  style='display: inline;width: 70%'>
 <br>
 
 <div id='result'>
@@ -47,11 +53,11 @@
 <h4>E-mail：yhyao@shinkong.com.tw	
 </h4>
 </div>
+</div>
 
 <script>
 $(function(){
-    $('#send').click(function(){
-          
+    $('#subject').change(function(){
         url = '${portal_url}/search_polyester_result'
         val = $('#subject').val()
         data = {'subject': val}
@@ -61,6 +67,8 @@ $(function(){
             url: url,
             success: function(rep){
                 $('#result').html(rep)
+                $('#result').hide()
+                $('#result').fadeIn('slow')
             }
         })
     })
@@ -68,6 +76,7 @@ $(function(){
 </script>
 </metal:content-core>
 </metal:content-core>
+
 
 </body>
 </html>

@@ -82,12 +82,11 @@ class SendMail(BrowserView):
         msg = request.get('msg')
         email = request.get('email')
         country = request.get('country')
-        recipient = api.content.find(context=api.portal.get()['system_file']['recipient'])[0].Description
         try:
             body_str = "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s" %(first_name, last_name, company, country, phone, cellphone, email, msg)
             mime_text = MIMEText(body_str, 'html', 'utf-8')
             api.portal.send_email(
-                recipient=recipient,
+                recipient="ah13441673@gmail.com",
                 sender="henry@mingtak.com.tw",
                 subject="意見",
                 body=mime_text.as_string(),
@@ -117,9 +116,8 @@ class SearchPolyesterResult(BrowserView):
         query = {
             'portal_type': 'polyester',
             'review_state': 'published',
+            'SearchableText': '%s*' %subject
         }
-        if subject:
-            query['SearchableText'] = '%s*' %subject
         self.result = api.content.find(**query)
         return self.template()
 
@@ -202,9 +200,6 @@ class SearchProductResult(BrowserView):
             sqlInstance.execSql(sqlStr)
 
             self.filterProduct = filterProduct if filterProduct else False
-
-            self.download_file = api.content.find(context=portal['system_file'], portal_type='File', depth=1)
-
             return self.template()
 
 
